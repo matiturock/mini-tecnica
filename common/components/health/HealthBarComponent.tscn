@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bhdeufstvmpft"]
+
+[ext_resource type="Script" uid="uid://devp1qqiuc2f8" path="res://common/components/health/health_bar_component.gd" id="1_e8xbe"]
+
+[node name="HealthBarComponent" type="ProgressBar" unique_id=1849140859]
+script = ExtResource("1_e8xbe")
