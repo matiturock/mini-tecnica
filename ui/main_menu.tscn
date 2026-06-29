@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bpda161etvili"]
+
+[ext_resource type="Script" uid="uid://b5raanto7rylf" path="res://ui/main_menu.gd" id="1_t7e0r"]
+[ext_resource type="PackedScene" uid="uid://bc0k68jg8yojk" path="res://levels/main_level.tscn" id="2_0dkrt"]
+
+[node name="MainMenu" type="Control" unique_id=446485377]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t7e0r")
+main_level = ExtResource("2_0dkrt")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=257046052]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.32941177, 0.4745098, 0.33333334, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=576047239]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1076911725]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=412562935]
+layout_mode = 2
+text = "MiniTecnica"
+
+[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=111996273]
+layout_mode = 2
+text = "PLAY"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=650693208]
+layout_mode = 2
+text = "EXIT"

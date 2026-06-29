@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Mini Tecnica"
-run/main_scene="uid://bc0k68jg8yojk"
+run/main_scene="uid://bpda161etvili"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -26,7 +26,8 @@ folder_colors={
 "res://assets/": "pink",
 "res://common/": "green",
 "res://entities/": "orange",
-"res://levels/": "yellow"
+"res://levels/": "yellow",
+"res://ui/": "teal"
 }
 
 [input]

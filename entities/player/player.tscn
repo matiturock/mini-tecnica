@@ -161,11 +161,11 @@ animations = [{
 radius = 7.0
 height = 32.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7thud"]
-size = Vector2(36, 58)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvtmh"]
 size = Vector2(41, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7thud"]
+size = Vector2(36, 58)
 
 [node name="Player" type="CharacterBody2D" unique_id=1005871355]
 collision_layer = 4
@@ -207,14 +207,6 @@ max_value = 3.0
 value = 3.0
 health_component = NodePath("../HealthComponent")
 
-[node name="HurtboxComponent" parent="." unique_id=1104243456 instance=ExtResource("9_wvtmh")]
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape2D" parent="HurtboxComponent" index="0" unique_id=466406985]
-shape = SubResource("RectangleShape2D_7thud")
-debug_color = Color(0.79415864, 0.27818608, 0.806085, 0.41960785)
-
 [node name="HitboxComponent" parent="." unique_id=1223773863 instance=ExtResource("10_wvtmh")]
 collision_layer = 0
 collision_mask = 32
@@ -225,7 +217,15 @@ shape = SubResource("RectangleShape2D_wvtmh")
 disabled = true
 debug_color = Color(0.7308941, 0.47160226, 0.09852306, 0.41960785)
 
+[node name="HurtboxComponent" parent="." unique_id=1104243456 instance=ExtResource("9_wvtmh")]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="HurtboxComponent" index="0" unique_id=466406985]
+shape = SubResource("RectangleShape2D_7thud")
+debug_color = Color(0.79415864, 0.27818608, 0.806085, 0.41960785)
+
 [node name="HealthComponent" parent="." unique_id=1902845616 instance=ExtResource("8_bectd")]
 
-[editable path="HurtboxComponent"]
 [editable path="HitboxComponent"]
+[editable path="HurtboxComponent"]

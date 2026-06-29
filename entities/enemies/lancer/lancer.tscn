@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dviiro3vrkq10" path="res://assets/entities/units/red/Lancer/Lancer_Right_Attack.png" id="3_fol37"]
 [ext_resource type="Texture2D" uid="uid://dvjspwy143f1f" path="res://assets/entities/units/red/Lancer/Lancer_Idle.png" id="3_xfjht"]
 [ext_resource type="Texture2D" uid="uid://br5ct7603db4m" path="res://assets/entities/units/red/Lancer/Lancer_Run.png" id="5_n7qee"]
+[ext_resource type="Script" uid="uid://devp1qqiuc2f8" path="res://common/components/health/health_bar_component.gd" id="6_n7qee"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hrlm2"]
 atlas = ExtResource("3_fol37")
@@ -181,6 +182,12 @@ size = Vector2(64, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ucvj"]
 size = Vector2(31.5, 54)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dpsvj"]
+radius = 289.04324
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_15ac6"]
+radius = 115.212845
+
 [node name="Lancer" unique_id=1236665966 instance=ExtResource("1_ylj1a")]
 script = ExtResource("2_5g47l")
 
@@ -217,3 +224,28 @@ collision_mask = 0
 position = Vector2(2.25, -4)
 shape = SubResource("RectangleShape2D_5ucvj")
 debug_color = Color(0.8815315, 0.18672863, 0.6947793, 0.41960785)
+
+[node name="HealthbarComponent" type="ProgressBar" parent="." index="6" unique_id=2090784411 node_paths=PackedStringArray("health_component")]
+offset_left = -36.0
+offset_top = -69.0
+offset_right = 40.0
+offset_bottom = -42.0
+script = ExtResource("6_n7qee")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://devp1qqiuc2f8"
+
+[node name="DetectRangeArea2D" type="Area2D" parent="." index="7" unique_id=2058711982]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRangeArea2D" index="0" unique_id=1134882295]
+shape = SubResource("CircleShape2D_dpsvj")
+debug_color = Color(0.686909, 0.5380319, 0.111494474, 0)
+
+[node name="AttackRangeArea2D" type="Area2D" parent="." index="8" unique_id=1599332771]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRangeArea2D" index="0" unique_id=1617455327]
+shape = SubResource("CircleShape2D_15ac6")
+debug_color = Color(0.8038494, 0.3128979, 0.70195067, 0)

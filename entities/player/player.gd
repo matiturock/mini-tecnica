@@ -11,6 +11,7 @@ enum Direction { LEFT, RIGHT }
 @onready var state_machine: StateMachine = $StateMachine
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hurtbox_component: HurtBoxComponent = $HurtboxComponent
+@onready var collision_hit: CollisionShape2D = $HitboxComponent/CollisionShape2D
 
 var input_vector: Vector2 = Vector2.ZERO
 var last_direction: Direction = Direction.RIGHT
