@@ -29,7 +29,7 @@ func _ready() -> void:
 	current_health = max_health
 
 
-func _on_hurt(damage: float) -> void:
+func _on_hurt(damage: float, _area: Area2D) -> void:
 	current_health -= damage
 
 

@@ -2,7 +2,7 @@
 class_name HurtBoxComponent
 extends Area2D
 
-signal hurt(damage: float)
+signal hurt(damage: float, area: Area2D)
 
-func take_damage(damage: float) -> void:
-	hurt.emit(damage)
+func take_damage(damage: float, area: Area2D) -> void:
+	hurt.emit(damage, area)

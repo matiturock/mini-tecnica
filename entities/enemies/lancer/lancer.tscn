@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://dvjspwy143f1f" path="res://assets/entities/units/red/Lancer/Lancer_Idle.png" id="3_xfjht"]
 [ext_resource type="Texture2D" uid="uid://br5ct7603db4m" path="res://assets/entities/units/red/Lancer/Lancer_Run.png" id="5_n7qee"]
 [ext_resource type="Script" uid="uid://devp1qqiuc2f8" path="res://common/components/health/health_bar_component.gd" id="6_n7qee"]
+[ext_resource type="Script" uid="uid://dxgpu4aeuqmk5" path="res://ai/tasks/is_in_attack_range.gd" id="7_7exgq"]
+[ext_resource type="Script" uid="uid://dx78q53rgwyxy" path="res://ai/tasks/patrol.gd" id="7_yoiw4"]
+[ext_resource type="Script" uid="uid://3i0c3o48eint" path="res://ai/tasks/attack.gd" id="8_72d1g"]
+[ext_resource type="Script" uid="uid://digxun0j6s71m" path="res://ai/tasks/is_target_detected.gd" id="9_m6y38"]
+[ext_resource type="Script" uid="uid://bjb154g3elxii" path="res://ai/tasks/chase_target.gd" id="10_aclgh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hrlm2"]
 atlas = ExtResource("3_fol37")
@@ -188,7 +193,56 @@ radius = 289.04324
 [sub_resource type="CircleShape2D" id="CircleShape2D_15ac6"]
 radius = 115.212845
 
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_n7qee"]
+var/target/name = &"target"
+var/target/type = 24
+var/target/hint = 34
+var/target/hint_string = ""
+var/in_range_attack/name = &"in_range_attack"
+var/in_range_attack/type = 1
+var/in_range_attack/value = false
+var/in_range_attack/hint = 0
+var/in_range_attack/hint_string = "El target se encuentra dentro del rango de ataque"
+var/spawn_position/name = &"spawn_position"
+var/spawn_position/type = 5
+var/spawn_position/value = Vector2(0, 0)
+var/spawn_position/hint = 0
+var/spawn_position/hint_string = "Punto de aparicion de la entidad"
+
+[sub_resource type="BTCondition" id="BTCondition_52x17"]
+script = ExtResource("7_7exgq")
+
+[sub_resource type="BTAction" id="BTAction_58bw0"]
+script = ExtResource("8_72d1g")
+
+[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_72d1g"]
+custom_name = "Atack"
+children = [SubResource("BTCondition_52x17"), SubResource("BTAction_58bw0")]
+
+[sub_resource type="BTCondition" id="BTCondition_5gfkm"]
+script = ExtResource("9_m6y38")
+
+[sub_resource type="BTAction" id="BTAction_hrlm2"]
+script = ExtResource("10_aclgh")
+
+[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_m6y38"]
+custom_name = "Chase"
+children = [SubResource("BTCondition_5gfkm"), SubResource("BTAction_hrlm2")]
+
+[sub_resource type="BTAction" id="BTAction_y15lm"]
+script = ExtResource("7_yoiw4")
+
+[sub_resource type="BTDynamicSelector" id="BTDynamicSelector_72d1g"]
+children = [SubResource("BTDynamicSequence_72d1g"), SubResource("BTDynamicSequence_m6y38"), SubResource("BTAction_y15lm")]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_15ac6"]
+blackboard_plan = SubResource("BlackboardPlan_n7qee")
+root_task = SubResource("BTDynamicSelector_72d1g")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_yoiw4"]
+
 [node name="Lancer" unique_id=1236665966 instance=ExtResource("1_ylj1a")]
+collision_layer = 17
 script = ExtResource("2_5g47l")
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=1428948644]
@@ -204,8 +258,7 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_xfjht")
 
 [node name="CooldownTimer" type="Timer" parent="." index="3" unique_id=1568748481]
-wait_time = 2.0
-autostart = true
+wait_time = 1.5
 
 [node name="HitBoxComponent" parent="." index="4" unique_id=1223773863]
 collision_layer = 0
@@ -249,3 +302,7 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRangeArea2D" index="0" unique_id=1617455327]
 shape = SubResource("CircleShape2D_15ac6")
 debug_color = Color(0.8038494, 0.3128979, 0.70195067, 0)
+
+[node name="BTPlayer" type="BTPlayer" parent="." index="9" unique_id=338146004]
+behavior_tree = SubResource("BehaviorTree_15ac6")
+blackboard_plan = SubResource("BlackboardPlan_yoiw4")
