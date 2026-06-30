@@ -15,7 +15,7 @@ var impact_frame: int = 1
 var can_attack: bool = false
 var is_attacking: bool = false
 var _last_direction: Direction = Direction.RIGHT
-var _offset_collision_hit: float = 80 ## Distante in px of CollisionHit from the center of Player
+var _offset_collision_hit: float = 90 ## Distante in px of CollisionHit from the center of Player
 
 
 func _ready() -> void:

@@ -9,9 +9,12 @@
 [ext_resource type="Script" uid="uid://bfqorw6et8yrb" path="res://entities/player/run.gd" id="7_qiwj3"]
 [ext_resource type="Script" uid="uid://dgnoqix5ly0ea" path="res://entities/player/attack.gd" id="8_7thud"]
 [ext_resource type="PackedScene" uid="uid://cs73vd5a3lowk" path="res://common/components/health/HealthComponent.tscn" id="8_bectd"]
+[ext_resource type="Script" uid="uid://dtikgc2hh056f" path="res://entities/player/hurt.gd" id="9_afbqv"]
 [ext_resource type="PackedScene" uid="uid://nt61wssmwfp7" path="res://common/components/hurtbox/hurtbox_component.tscn" id="9_wvtmh"]
+[ext_resource type="Script" uid="uid://bv1oxefc5pa2r" path="res://entities/player/dead.gd" id="10_gx6sm"]
 [ext_resource type="PackedScene" uid="uid://c81d4ta4qolm4" path="res://common/components/hitbox/HitboxComponent.tscn" id="10_wvtmh"]
 [ext_resource type="PackedScene" uid="uid://bhdeufstvmpft" path="res://common/components/health/HealthBarComponent.tscn" id="12_a1qjk"]
+[ext_resource type="Script" uid="uid://bwygemaphssdf" path="res://entities/player/camera_2d.gd" id="13_j3ovn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b2kln"]
 atlas = ExtResource("2_bls4j")
@@ -196,6 +199,12 @@ script = ExtResource("7_qiwj3")
 [node name="Attack" type="Node" parent="StateMachine" unique_id=623002017]
 script = ExtResource("8_7thud")
 
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=1404551988]
+script = ExtResource("9_afbqv")
+
+[node name="Dead" type="Node" parent="StateMachine" unique_id=227811129]
+script = ExtResource("10_gx6sm")
+
 [node name="HealthBarComponent" parent="." unique_id=1849140859 node_paths=PackedStringArray("health_component") instance=ExtResource("12_a1qjk")]
 offset_left = -49.0
 offset_top = -76.0
@@ -224,6 +233,9 @@ shape = SubResource("RectangleShape2D_7thud")
 debug_color = Color(0.79415864, 0.27818608, 0.806085, 0.41960785)
 
 [node name="HealthComponent" parent="." unique_id=1902845616 instance=ExtResource("8_bectd")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1553714660]
+script = ExtResource("13_j3ovn")
 
 [editable path="HitboxComponent"]
 [editable path="HurtboxComponent"]
