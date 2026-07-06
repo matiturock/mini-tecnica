@@ -36,7 +36,7 @@ Para clonar este proyecto y probarlo en tu máquina, sigue estos pasos:
 1. **Clonar el repositorio:**
    Abre tu terminal favorita y ejecuta el siguiente comando:
    ```bash
-   git clone https://github.com/TU_USUARIO/TU_REPOSITORIO.git
+   git clone https://github.com/matiturock/mini-tecnica
    ```
 
 2. **Importar el proyecto en Godot:**
@@ -57,4 +57,4 @@ Para clonar este proyecto y probarlo en tu máquina, sigue estos pasos:
 ## ⌨️ Controles por Defecto
 * **Movimiento:** Flechas del teclado o teclas `W`, `A`, `S`, `D`.
 * **Atacar:** Barra Espaciadora.
-* **Interactuar:** `E`.
+* **Interactuar:** `E` (a futuro).
